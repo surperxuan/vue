@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="bob">
+    <section>
+    <router-view></router-view>
+    </section>
+    <footer v-if="!$route.meta.isHideTopAndBottom">
+    <router-link :to="{name:'index'}">首页</router-link>
+    <router-link :to="{name:'List'}">分类</router-link>
+    <router-link :to="{name:'our'}">个人</router-link>
+    </footer>
+    </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+export default{
+    data(){
+        return{
+            title:'首页',
+        }
+    },
+    methods:{
+    }
 }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body,html{height:100%;font-size:0.4rem;}
+  .bob{height:100%;display:flex;flex-direction: column;}
+  hgroup{height:10%;background:orangered;}
+  section{min-height:90%;width:100%;overflow:auto;}
+  footer{min-height:10%;width:100%;background:red;}
 </style>
+
