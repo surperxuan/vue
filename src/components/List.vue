@@ -109,6 +109,7 @@ export default {
   float: left;
   height:0.5rem;
   text-align: center;
+  margin-bottom:0.1rem;
   width:2rem;
   background: orange;
 }

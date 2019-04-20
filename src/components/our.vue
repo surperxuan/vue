@@ -1,17 +1,86 @@
 <template>
-    <hgroup>{{title}}</hgroup>
+  <div>
+      <hgroup>{{title}}</hgroup>
+    <!-- <img class="user-poster" src="../assets/1.jpg"> -->
+    <van-row class="user-links">
+      <van-col span="6">
+        <van-icon name="pending-payment" />
+        待付款
+      </van-col>
+      <van-col span="6">
+        <van-icon name="records" />
+        待接单
+      </van-col>
+      <van-col span="6">
+        <van-icon name="tosend" />
+        待发货
+      </van-col>
+      <van-col span="6">
+        <van-icon name="logistics" />
+        已发货
+      </van-col>
+    </van-row>
+
+    <van-cell-group class="user-group">
+      <van-cell icon="records" title="全部订单" is-link />
+    </van-cell-group>
+
+    <van-cell-group>
+      <van-cell icon="points" title="我的积分" is-link />
+      <van-cell icon="gold-coin-o" title="我的优惠券" is-link />
+      <van-cell icon="gift-o" title="我收到的礼物" is-link />
+    </van-cell-group>
+    <br />
+    <br />
+    <button @click="logOutHandle" class="loggo">退出</button>
+
+  </div>
 </template>
+
 <script>
+
+import { LoginOut } from '../utils/auth'
 export default {
+   methods: {
+    logOutHandle() {
+      LoginOut()
+      this.$router.push({
+        name: 'Login'
+      })
+    }
+  },
     data(){
         return{
-            title:'个人',
+            title:'自己'
         }
     }
-}
+};
 </script>
-<style lang="scss" scoped>
 
+<style scoped>
+
+  .user-poster {
+    width: 100%;
+    display: block;
+  }
+  .user-group {
+    margin-bottom: 15px;
+  }
+  .user-links {
+    padding: 15px 0;
+    font-size: 12px;
+    text-align: center;
+    background-color: #fff;
+  }
+.van-icon {
+      display: block;
+      font-size: 24px;
+    }
+.loggo{
+	width: 100%;
+	background: #00B7FF;
+	font-size: 22px;
+	color: #000;
+}
 </style>
-
 
